@@ -1,0 +1,43 @@
+﻿IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+CREATE TABLE [countries] (
+    [id] int NOT NULL IDENTITY,
+    [name] nchar(10) NOT NULL,
+    [loc2] char(2) NOT NULL,
+    [loc3] char(3) NOT NULL,
+    CONSTRAINT [PK_countries] PRIMARY KEY ([id])
+);
+GO
+
+CREATE TABLE [cities] (
+    [id] int NOT NULL IDENTITY,
+    [name] nchar(10) NOT NULL,
+    [lat] decimal(18,4) NOT NULL,
+    [lon] decimal(18,0) NOT NULL,
+    [countryID] int NULL,
+    CONSTRAINT [PK_cities_1] PRIMARY KEY ([id]),
+    CONSTRAINT [FK_cities_countries] FOREIGN KEY ([countryID]) REFERENCES [countries] ([id])
+);
+GO
+
+CREATE INDEX [IX_cities_countryID] ON [cities] ([countryID]);
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20230224193304_initial', N'7.0.3');
+GO
+
+COMMIT;
+GO
+
