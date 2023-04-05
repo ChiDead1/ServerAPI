@@ -1,23 +1,29 @@
-var builder = WebApplication.CreateBuilder(args);
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("http://example.com",
-                                              "http://www.contoso.com");
-                      });
-});
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using ClassLibrary584;
+using ServerAPI;
+using System.ComponentModel.DataAnnotations.Schema;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen();
-//builder.Services.AddCors(options => options.AddPolicy("AllowAnything",));
-var app = builder.Build();
+
+builder.Services.AddDbContext<MasterContext>(optionsBuilder =>
+    optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
+
+
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -26,14 +32,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
 app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary584.Migrations
 {
-    [DbContext(typeof(WorldcitesContext))]
+    [DbContext(typeof(MasterContext))]
     [Migration("20230224201028_Popluations")]
     partial class Popluations
     {
@@ -25,7 +25,7 @@ namespace ClassLibrary584.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ClassLibrary584.City", b =>
+            modelBuilder.Entity("ClassLibrary584.EasternNovel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,9 +34,9 @@ namespace ClassLibrary584.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CountryId")
+                    b.Property<int?>("NovelId")
                         .HasColumnType("int")
-                        .HasColumnName("countryID");
+                        .HasColumnName("NovelID");
 
                     b.Property<decimal>("Lat")
                         .HasColumnType("decimal(18, 4)")
@@ -56,12 +56,12 @@ namespace ClassLibrary584.Migrations
                     b.HasKey("Id")
                         .HasName("PK_cities_1");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex("NovelId");
 
                     b.ToTable("cities");
                 });
 
-            modelBuilder.Entity("ClassLibrary584.Country", b =>
+            modelBuilder.Entity("ClassLibrary584.Novel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,22 +95,22 @@ namespace ClassLibrary584.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("countries");
+                    b.ToTable("Novel");
                 });
 
-            modelBuilder.Entity("ClassLibrary584.City", b =>
+            modelBuilder.Entity("ClassLibrary584.EasternNovel", b =>
                 {
-                    b.HasOne("ClassLibrary584.Country", "Country")
+                    b.HasOne("ClassLibrary584.Novel", "Novel")
                         .WithMany("Cities")
-                        .HasForeignKey("CountryId")
-                        .HasConstraintName("FK_cities_countries");
+                        .HasForeignKey("NovelId")
+                        .HasConstraintName("FK_cities_Novel");
 
-                    b.Navigation("Country");
+                    b.Navigation("Novel");
                 });
 
-            modelBuilder.Entity("ClassLibrary584.Country", b =>
+            modelBuilder.Entity("ClassLibrary584.Novel", b =>
                 {
-                    b.Navigation("Cities");
+                    b.Navigation("EasternNovel");
                 });
 #pragma warning restore 612, 618
         }

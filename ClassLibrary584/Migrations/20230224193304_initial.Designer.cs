@@ -11,107 +11,87 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary584.Migrations
 {
-    [DbContext(typeof(WorldcitesContext))]
-    [Migration("20230224193304_initial")]
-    partial class initial
+    [DbContext(typeof(MasterContext))]
+    [Migration("20211118040102_Initial")]
+    partial class Initial
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.3")
+                .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ClassLibrary584.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
+            modelBuilder.Entity("ClassLibary584.EasternNovel", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("CountryId")
-                        .HasColumnType("int")
-                        .HasColumnName("countryID");
+                b.Property<int>("NovelId")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("Lat")
-                        .HasColumnType("decimal(18, 4)")
-                        .HasColumnName("lat");
+                b.Property<decimal>("Lat")
+                    .HasColumnType("decimal(7,4)");
 
-                    b.Property<decimal>("Lon")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("lon");
+                b.Property<decimal>("Lon")
+                    .HasColumnType("decimal(7,4)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nchar(10)")
-                        .HasColumnName("name")
-                        .IsFixedLength();
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id")
-                        .HasName("PK_cities_1");
+                b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
+                b.HasIndex("NovelId");
 
-                    b.ToTable("cities");
-                });
+                b.ToTable("Cities", (string)null);
+            });
 
-            modelBuilder.Entity("ClassLibrary584.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
+            modelBuilder.Entity("ClassLibary584Novel", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Loc2")
-                        .IsRequired()
-                        .HasMaxLength(2)
-                        .IsUnicode(false)
-                        .HasColumnType("char(2)")
-                        .HasColumnName("loc2")
-                        .IsFixedLength();
+                b.Property<string>("ISO2")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Loc3")
-                        .IsRequired()
-                        .HasMaxLength(3)
-                        .IsUnicode(false)
-                        .HasColumnType("char(3)")
-                        .HasColumnName("loc3")
-                        .IsFixedLength();
+                b.Property<string>("ISO3")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nchar(10)")
-                        .HasColumnName("name")
-                        .IsFixedLength();
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("countries");
-                });
+                b.ToTable("Novel", (string)null);
+            });
 
-            modelBuilder.Entity("ClassLibrary584.City", b =>
-                {
-                    b.HasOne("ClassLibrary584.Country", "Country")
-                        .WithMany("Cities")
-                        .HasForeignKey("CountryId")
-                        .HasConstraintName("FK_cities_countries");
+            modelBuilder.Entity("ClassLibary584.EasternNovel", b =>
+            {
+                b.HasOne("WorldCitiesAPI.Data.Models.Novel", "Novel")
+                    .WithMany("Cities")
+                    .HasForeignKey("NovelId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Country");
-                });
+                b.Navigation("Novel");
+            });
 
-            modelBuilder.Entity("ClassLibrary584.Country", b =>
-                {
-                    b.Navigation("Cities");
-                });
+            modelBuilder.Entity("ClassLibary584.Novel", b =>
+            {
+                b.Navigation("EasternNovel");
+            });
 #pragma warning restore 612, 618
         }
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tienn\\OneDrive\\Desktop\\Comp584Server\\COmp584Part1\\ServerAPI\\ClassLibrary584\\ClassLibrary584.csproj": {}
+    "C:\\Users\\tienn\\OneDrive\\Desktop\\Server\\ClassLibrary584\\ClassLibrary584.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tienn\\OneDrive\\Desktop\\Comp584Server\\COmp584Part1\\ServerAPI\\ClassLibrary584\\ClassLibrary584.csproj": {
+    "C:\\Users\\tienn\\OneDrive\\Desktop\\Server\\ClassLibrary584\\ClassLibrary584.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tienn\\OneDrive\\Desktop\\Comp584Server\\COmp584Part1\\ServerAPI\\ClassLibrary584\\ClassLibrary584.csproj",
+        "projectUniqueName": "C:\\Users\\tienn\\OneDrive\\Desktop\\Server\\ClassLibrary584\\ClassLibrary584.csproj",
         "projectName": "ClassLibrary584",
-        "projectPath": "C:\\Users\\tienn\\OneDrive\\Desktop\\Comp584Server\\COmp584Part1\\ServerAPI\\ClassLibrary584\\ClassLibrary584.csproj",
+        "projectPath": "C:\\Users\\tienn\\OneDrive\\Desktop\\Server\\ClassLibrary584\\ClassLibrary584.csproj",
         "packagesPath": "C:\\Users\\tienn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tienn\\OneDrive\\Desktop\\Comp584Server\\COmp584Part1\\ServerAPI\\ClassLibrary584\\obj\\",
+        "outputPath": "C:\\Users\\tienn\\OneDrive\\Desktop\\Server\\ClassLibrary584\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,21 +43,25 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.4, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",

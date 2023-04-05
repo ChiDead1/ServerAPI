@@ -4,62 +4,60 @@
 
 namespace ClassLibrary584.Migrations
 {
-    /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "countries",
+                name: "NovelLibary",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nchar(10)", fixedLength: true, maxLength: 10, nullable: false),
-                    loc2 = table.Column<string>(type: "char(2)", unicode: false, fixedLength: true, maxLength: 2, nullable: false),
-                    loc3 = table.Column<string>(type: "char(3)", unicode: false, fixedLength: true, maxLength: 3, nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ISO2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ISO3 = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_countries", x => x.id);
+                    table.PrimaryKey("PK_NovelLibary", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "cities",
+                name: "EasternNovelLibary",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nchar(10)", fixedLength: true, maxLength: 10, nullable: false),
-                    lat = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
-                    lon = table.Column<decimal>(type: "decimal(18,0)", nullable: false),
-                    countryID = table.Column<int>(type: "int", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Lat = table.Column<decimal>(type: "decimal(7,4)", nullable: false),
+                    Lon = table.Column<decimal>(type: "decimal(7,4)", nullable: false),
+                    NovelId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_cities_1", x => x.id);
+                    table.PrimaryKey("PK_EasternNovelLibary", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_cities_countries",
-                        column: x => x.countryID,
-                        principalTable: "countries",
-                        principalColumn: "id");
+                        name: "FK_EasternNovelLibary_NovelLibary_NovelId",
+                        column: x => x.NovelId,
+                        principalTable: "NovelLibary",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_cities_countryID",
-                table: "cities",
-                column: "countryID");
+                name: "IX_Cities_NovelId",
+                table: "EasternNovelLibary",
+                column: "NovelId");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "cities");
+                name: "EasternNovel");
 
             migrationBuilder.DropTable(
-                name: "countries");
+                name: "Novel");
         }
     }
 }
