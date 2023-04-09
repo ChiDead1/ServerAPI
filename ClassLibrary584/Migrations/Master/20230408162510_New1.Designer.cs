@@ -3,16 +3,19 @@ using ClassLibrary584;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ClassLibrary584.Migrations
+namespace ClassLibrary584.Migrations.Master
 {
     [DbContext(typeof(MasterContext))]
-    partial class MasterContextContextModelSnapshot : ModelSnapshot
+    [Migration("20230408162510_New1")]
+    partial class New1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +38,7 @@ namespace ClassLibrary584.Migrations
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Author")
+                    b.Property<decimal>("Lon")
                         .HasColumnType("decimal(7,4)");
 
                     b.Property<string>("Name")
@@ -48,7 +51,7 @@ namespace ClassLibrary584.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.HasIndex("Author");
+                    b.HasIndex("Lon");
 
                     b.HasIndex("Name");
 

@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibrary584;
 
-    [Table("Countries")]
+    [Table("NovelLibary")]
 [Index(nameof(Name))]
 [Index(nameof(ISO2))]
 [Index(nameof(ISO3))]
-public class Novel
+public class NovelLibary
 {
     #region Properties
     /// <summary>

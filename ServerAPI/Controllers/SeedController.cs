@@ -49,7 +49,7 @@ namespace ServerAPI.Controllers
             // create a lookup dictionary 
             // containing all the countries already existing 
             // into the Database (it will be empty on first run).
-            var countriesByName = _context.Novel
+            var countriesByName = _context.NovelL
                 .AsNoTracking()
                 .ToDictionary(x => x.Name, StringComparer.OrdinalIgnoreCase);
 
@@ -68,7 +68,7 @@ namespace ServerAPI.Controllers
                     continue;
 
                 // create the Novel entity and fill it with xlsx data 
-                var Novel = new Novel
+                var Novel = new NovelLibary
                 {
                     Name = NovelName,
                     ISO2 = iso2,
@@ -76,9 +76,9 @@ namespace ServerAPI.Controllers
                 };
 
                 // add the new Novel to the DB context 
-                await _context.Novel.AddAsync(Novel);
+                await _context.NovelL.AddAsync(Novel);
 
-                // store the Novel in our lookup to retrieve its Id later on
+                // store the Novel in our lookup to retrieve its Id Chapterer on
                 countriesByName.Add(NovelName, Novel);
 
                 // increment the counter 
@@ -96,8 +96,8 @@ namespace ServerAPI.Controllers
                 .AsNoTracking()
                 .ToDictionary(x => (
                     Name: x.Name,
-                    Lat: x.Lat,
-                    Lon: x.Lon,
+                    Chapter: x.Chapter,
+                    Author: x.Author,
                     CountryId: x.CountryId));
 
             // iterates through all rows, skipping the first one 
@@ -107,8 +107,8 @@ namespace ServerAPI.Controllers
                     nRow, 1, nRow, worksheet.Dimension.End.Column];
 
                 var name = row[nRow, 1].GetValue<string>();
-                var lat = row[nRow, 3].GetValue<decimal>();
-                var lon = row[nRow, 4].GetValue<decimal>();
+                var Chapter = row[nRow, 3].GetValue<decimal>();
+                var Author = row[nRow, 4].GetValue<decimal>();
                 var NovelName = row[nRow, 5].GetValue<string>();
 
                 // retrieve Novel Id by NovelName
@@ -117,8 +117,8 @@ namespace ServerAPI.Controllers
                 // skip this city if it already exists in the database
                 if (EasternNovelLibarys.ContainsKey((
                     Name: name,
-                    Lat: lat,
-                    Lon: lon,
+                    Chapter: Chapter,
+                    Author: Author,
                     CountryId: CountryId)))
                     continue;
 
@@ -126,8 +126,8 @@ namespace ServerAPI.Controllers
                 var EasternNovelLibary = new EasternNovelLibary
                 {
                     Name = name,
-                    Lat = lat,
-                    Lon = lon,
+                    Chapter = Chapter,
+                    Author = Author,
                     CountryId = CountryId
                 };
 

@@ -13,47 +13,47 @@ namespace ServerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NovelController : ControllerBase
+    public class NovelLibaryController : ControllerBase
     {
         private readonly MasterContext _context;
 
-        public NovelController(MasterContext context)
+        public NovelLibaryController(MasterContext context)
         {
             _context = context;
         }
 
-        // GET: api/Novel
+        // GET: api/NovelLibary
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Novel>>> GetNovel()
+        public async Task<ActionResult<IEnumerable<NovelLibary>>> GetNovelLibary()
         {
-            return await _context.Novel.ToListAsync();
+            return await _context.NovelL.ToListAsync();
         }
 
-        // GET: api/Novel/5
+        // GET: api/NovelLibary/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Novel>> getNovelId(int id)
+        public async Task<ActionResult<NovelLibary>> getNovelLibaryId(int id)
         {
-            var Novel = await _context.Novel.FindAsync(id);
+            var NovelL = await _context.NovelL.FindAsync(id);
 
-            if (Novel == null)
+            if (NovelL == null)
             {
                 return NotFound();
             }
 
-            return Novel;
+            return NovelL;
         }
 
-        // PUT: api/Novel/5
+        // PUT: api/NovelLibary/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutNovel(int id, Novel Novel)
+        public async Task<IActionResult> PutNovelLibary(int id, NovelLibary NovelL)
         {
-            if (id != Novel.Id)
+            if (id != NovelL.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(Novel).State = EntityState.Modified;
+            _context.Entry(NovelL).State = EntityState.Modified;
 
             try
             {
@@ -74,28 +74,28 @@ namespace ServerAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Novel
+        // POST: api/NovelLibary
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Novel>> PostNovel(Novel Novel)
+        public async Task<ActionResult<NovelLibary>> PostNovelLibary(NovelLibary NovelL)
         {
-            _context.Novel.Add(Novel);
+            _context.NovelL.Add(NovelL);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetNovel", new { id = Novel.Id }, Novel);
+            return CreatedAtAction("GetNovelL", new { id = NovelL.Id }, NovelL);
         }
 
-        // DELETE: api/Novel/5
+        // DELETE: api/NovelLibary/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteNovel(int id)
+        public async Task<IActionResult> DeleteNovelLibary(int id)
         {
-            var Novel = await _context.Novel.FindAsync(id);
-            if (Novel == null)
+            var NovelL = await _context.NovelL.FindAsync(id);
+            if (NovelL == null)
             {
                 return NotFound();
             }
 
-            _context.Novel.Remove(Novel);
+            _context.NovelL.Remove(NovelL);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -103,7 +103,7 @@ namespace ServerAPI.Controllers
 
         private bool NovelExists(int id)
         {
-            return _context.Novel.Any(e => e.Id == id);
+            return _context.NovelL.Any(e => e.Id == id);
         }
     }
 }

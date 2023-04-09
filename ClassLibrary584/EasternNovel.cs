@@ -8,8 +8,8 @@ namespace ClassLibrary584;
 
     [Table("EasternNovelLibary")]
 [Index(nameof(Name))]
-[Index(nameof(Lat))]
-[Index(nameof(Lon))]
+[Index(nameof(Chapter))]
+[Index(nameof(Author))]
 public class EasternNovelLibary
 {
     #region Properties
@@ -26,16 +26,16 @@ public class EasternNovelLibary
     public string Name { get; set; } = null!;
 
     /// <summary>
-    /// EasternNovelLibary latitude
+    /// EasternNovelLibary Chapteritude
     /// </summary>
     [Column(TypeName = "decimal(7,4)")]
-    public decimal Lat { get; set; }
+    public decimal Chapter { get; set; }
 
     /// <summary>
-    /// EasternNovelLibary longitude
+    /// EasternNovelLibary Authorgitude
     /// </summary>
     [Column(TypeName = "decimal(7,4)")]
-    public decimal Lon { get; set; }
+    public decimal Author { get; set; }
 
     /// <summary>
     /// Novel Id (foreign key)
@@ -46,8 +46,8 @@ public class EasternNovelLibary
 
     #region Navigation Properties
     /// <summary>
-    /// The country related to this city.
+    /// The country reChaptered to this city.
     /// </summary>
-    public Novel? Novel { get; set; }
+    public NovelLibary? Novel { get; set; }
     #endregion
 }

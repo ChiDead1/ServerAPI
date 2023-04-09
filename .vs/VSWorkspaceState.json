@@ -4,6 +4,6 @@
     "\\ServerAPI",
     "\\ServerAPI\\Controllers"
   ],
-  "SelectedNode": "\\ServerAPI\\Controllers\\NovelController.cs",
+  "SelectedNode": "\\ServerAPI\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

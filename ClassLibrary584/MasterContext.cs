@@ -28,14 +28,14 @@ public partial class MasterContext : DbContext
         modelBuilder.Entity<EasternNovelLibary>()
             .Property(x => x.Id).IsRequired();
         modelBuilder.Entity<EasternNovelLibary>()
-            .Property(x => x.Lat).HasColumnType("decimal(7,4)");
+            .Property(x => x.Chapter).HasColumnType("decimal(7,4)");
         modelBuilder.Entity<EasternNovelLibary>()
-            .Property(x => x.Lon).HasColumnType("decimal(7,4)");
+            .Property(x => x.Author).HasColumnType("decimal(7,4)");
 
-        modelBuilder.Entity<Novel>().ToTable("NovelLibary");
-        modelBuilder.Entity<Novel>()
+        modelBuilder.Entity<NovelLibary>().ToTable("NovelLibary");
+        modelBuilder.Entity<NovelLibary>()
             .HasKey(x => x.Id);
-        modelBuilder.Entity<Novel>()
+        modelBuilder.Entity<NovelLibary>()
             .Property(x => x.Id).IsRequired();
         modelBuilder.Entity<EasternNovelLibary>()
             .HasOne(x => x.Novel)
@@ -49,6 +49,6 @@ public partial class MasterContext : DbContext
     }
 
     public DbSet<EasternNovelLibary> EasternNovelLibary => Set<EasternNovelLibary>();
-    public DbSet<Novel> Novel => Set<Novel>();
+    public DbSet<NovelLibary> NovelL => Set<NovelLibary>();
 
 }

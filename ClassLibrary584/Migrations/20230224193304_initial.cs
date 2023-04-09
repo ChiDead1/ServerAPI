@@ -30,8 +30,8 @@ namespace ClassLibrary584.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Lat = table.Column<decimal>(type: "decimal(7,4)", nullable: false),
-                    Lon = table.Column<decimal>(type: "decimal(7,4)", nullable: false),
+                    Chapter = table.Column<decimal>(type: "decimal(7,4)", nullable: false),
+                    Author = table.Column<decimal>(type: "decimal(7,4)", nullable: false),
                     NovelId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
