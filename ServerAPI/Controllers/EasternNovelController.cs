@@ -6,6 +6,7 @@ using ClassLibrary584;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -31,7 +32,8 @@ public class EasternNovelLibaryController : ControllerBase
 
     // GET: api/EasternNovelLibary/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<EasternNovelLibary>> GetCity(int id)
+  
+        public async Task<ActionResult<EasternNovelLibary>> GetCity(int id)
     {
         var city = await _context.EasternNovelLibary.FindAsync(id);
 
@@ -46,7 +48,8 @@ public class EasternNovelLibaryController : ControllerBase
     // PUT: api/EasternNovelLibary/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutCity(int id, EasternNovelLibary city)
+        [Authorize(Roles = "RegisteredUser")]
+        public async Task<IActionResult> PutCity(int id, EasternNovelLibary city)
     {
         if (id != city.Id)
         {
@@ -77,7 +80,8 @@ public class EasternNovelLibaryController : ControllerBase
     // POST: api/EasternNovelLibary
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-    public async Task<ActionResult<EasternNovelLibary>> PostCity(EasternNovelLibary city)
+        [Authorize(Roles = "RegisteredUser")]
+        public async Task<ActionResult<EasternNovelLibary>> PostCity(EasternNovelLibary city)
     {
         _context.EasternNovelLibary.Add(city);
         await _context.SaveChangesAsync();
@@ -87,7 +91,8 @@ public class EasternNovelLibaryController : ControllerBase
 
     // DELETE: api/EasternNovelLibary/5
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteCity(int id)
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> DeleteCity(int id)
     {
         var city = await _context.EasternNovelLibary.FindAsync(id);
         if (city == null)

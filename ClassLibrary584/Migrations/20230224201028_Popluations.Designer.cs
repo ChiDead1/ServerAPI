@@ -25,7 +25,7 @@ namespace ClassLibrary584.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ClassLibrary584.EasternNovel", b =>
+            modelBuilder.Entity("ClassLibrary584.EasternNovelLibary", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -98,7 +98,7 @@ namespace ClassLibrary584.Migrations
                     b.ToTable("Novel");
                 });
 
-            modelBuilder.Entity("ClassLibrary584.EasternNovel", b =>
+            modelBuilder.Entity("ClassLibrary584.EasternNovelLibary", b =>
                 {
                     b.HasOne("ClassLibrary584.Novel", "Novel")
                         .WithMany("Cities")
@@ -110,7 +110,7 @@ namespace ClassLibrary584.Migrations
 
             modelBuilder.Entity("ClassLibrary584.Novel", b =>
                 {
-                    b.Navigation("EasternNovel");
+                    b.Navigation("EasternNovelLibary");
                 });
 #pragma warning restore 612, 618
         }

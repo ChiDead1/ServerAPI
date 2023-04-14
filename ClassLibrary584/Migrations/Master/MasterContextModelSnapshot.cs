@@ -21,7 +21,7 @@ namespace ClassLibrary584.Migrations.Master
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ClassLibrary584.EasternNovel", b =>
+            modelBuilder.Entity("ClassLibrary584.EasternNovelLibary", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,10 +52,10 @@ namespace ClassLibrary584.Migrations.Master
 
                     b.HasIndex("NovelId");
 
-                    b.ToTable("EasternNovel");
+                    b.ToTable("EasternNovelLibary");
                 });
 
-            modelBuilder.Entity("ClassLibrary584.Novel", b =>
+            modelBuilder.Entity("ClassLibrary584.NovelLibary", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,18 +86,18 @@ namespace ClassLibrary584.Migrations.Master
                     b.ToTable("Countries");
                 });
 
-            modelBuilder.Entity("ClassLibrary584.EasternNovel", b =>
+            modelBuilder.Entity("ClassLibrary584.EasternNovelLibary", b =>
                 {
-                    b.HasOne("ClassLibrary584.Novel", "Novel")
+                    b.HasOne("ClassLibrary584.NovelLibary", "NovelLibary")
                         .WithMany("EasternN")
                         .HasForeignKey("NovelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Novel");
+                    b.Navigation("NovelLibary");
                 });
 
-            modelBuilder.Entity("ClassLibrary584.Novel", b =>
+            modelBuilder.Entity("ClassLibrary584.NovelLibary", b =>
                 {
                     b.Navigation("EasternN");
                 });

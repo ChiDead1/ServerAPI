@@ -11,7 +11,7 @@ namespace ClassLibrary584.Migrations.Master
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Countries",
+                name: "NovelLibary",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,11 +22,11 @@ namespace ClassLibrary584.Migrations.Master
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Countries", x => x.Id);
+                    table.PrimaryKey("PK_NovelLibary", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "EasternNovel",
+                name: "EasternNovelLibary",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -38,59 +38,52 @@ namespace ClassLibrary584.Migrations.Master
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EasternNovel", x => x.Id);
+                    table.PrimaryKey("PK_EasternNovelLibary", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EasternNovel_Countries_NovelId",
+                        name: "FK_EasternNovelLibary_NovelLibary_NovelId",
                         column: x => x.NovelId,
-                        principalTable: "Countries",
+                        principalTable: "NovelLibary",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Countries_ISO2",
-                table: "Countries",
+                name: "IX_NovelLibary_ISO2",
+                table: "NovelLibary",
                 column: "ISO2");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Countries_ISO3",
-                table: "Countries",
+                name: "IX_NovelLibary_ISO3",
+                table: "NovelLibary",
                 column: "ISO3");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Countries_Name",
-                table: "Countries",
+                name: "IX_NovelLibary_Name",
+                table: "NovelLibary",
                 column: "Name");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EasternNovel_Lat",
-                table: "EasternNovel",
+                name: "IX_EasternNovelLibary_Lat",
+                table: "EasternNovelLibary",
                 column: "Lat");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EasternNovel_Lon",
-                table: "EasternNovel",
+                name: "IX_EasternNovelLibary_Lon",
+                table: "EasternNovelLibary",
                 column: "Lon");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EasternNovel_Name",
-                table: "EasternNovel",
+                name: "IX_EasternNovelLibary_Name",
+                table: "EasternNovelLibary",
                 column: "Name");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EasternNovel_NovelId",
-                table: "EasternNovel",
+                name: "IX_EasternNovelLibary_NovelId",
+                table: "EasternNovelLibary",
                 column: "NovelId");
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "EasternNovel");
-
-            migrationBuilder.DropTable(
-                name: "Countries");
-        }
+       
     }
 }

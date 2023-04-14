@@ -51,13 +51,6 @@ namespace ClassLibrary584.Migrations
                 column: "NovelId");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "EasternNovel");
-
-            migrationBuilder.DropTable(
-                name: "Novel");
-        }
+       
     }
 }

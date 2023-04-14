@@ -24,7 +24,7 @@ namespace ClassLibrary584.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ClassLibary584.EasternNovel", b =>
+            modelBuilder.Entity("ClassLibary584.EasternNovelLibary", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -52,7 +52,7 @@ namespace ClassLibrary584.Migrations
                 b.ToTable("Cities", (string)null);
             });
 
-            modelBuilder.Entity("ClassLibary584Novel", b =>
+            modelBuilder.Entity("ClassLibary584NovelLibary", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -74,23 +74,23 @@ namespace ClassLibrary584.Migrations
 
                 b.HasKey("Id");
 
-                b.ToTable("Novel", (string)null);
+                b.ToTable("NovelLibary", (string)null);
             });
 
-            modelBuilder.Entity("ClassLibary584.EasternNovel", b =>
+            modelBuilder.Entity("ClassLibary584.EasternNovelLibary", b =>
             {
-                b.HasOne("WorldCitiesAPI.Data.Models.Novel", "Novel")
+                b.HasOne("WorldCitiesAPI.Data.Models.NovelLibary", "NovelLibary")
                     .WithMany("Cities")
                     .HasForeignKey("NovelId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
 
-                b.Navigation("Novel");
+                b.Navigation("NovelLibary");
             });
 
-            modelBuilder.Entity("ClassLibary584.Novel", b =>
+            modelBuilder.Entity("ClassLibary584.NovelLibary", b =>
             {
-                b.Navigation("EasternNovel");
+                b.Navigation("EasternNovelLibary");
             });
 #pragma warning restore 612, 618
         }

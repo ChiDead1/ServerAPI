@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace ClassLibrary584;
 
-public partial class MasterContext : DbContext
+public partial class MasterContext : IdentityDbContext<ApplicationUser>
 {
-    public MasterContext()
+    public MasterContext(): base()
     {
     }
 
