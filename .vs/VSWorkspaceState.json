@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\ClassLibrary584",
     "\\ServerAPI",
     "\\ServerAPI\\Controllers"
   ],
-  "SelectedNode": "\\ServerAPI\\Controllers\\NovelController.cs",
+  "SelectedNode": "\\ClassLibrary584\\MasterContext.cs",
   "PreviewInSolutionExplorer": false
 }

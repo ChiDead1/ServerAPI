@@ -154,3 +154,9 @@ C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\Microsoft.Exte
 C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\Castle.Core.dll
 C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\Moq.dll
+C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\publish\web.config
+C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\publish\appsettings.Development.json
+C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\publish\appsettings.json
+C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\publish\appsettings.production.json
+C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\publish\ServerAPI.deps.json
+C:\Users\tienn\OneDrive\Desktop\Server\ServerAPI\bin\Debug\net7.0\publish\ServerAPI.runtimeconfig.json

@@ -126,7 +126,7 @@ namespace ServerAPI.Controllers
                 // retrieve Novel Id by NovelName
                 var CountryId = countriesByName[NovelName].Id;
 
-                // skip this city if it already exists in the database
+                // skip this easternNovelLibary if it already exists in the database
                 if (EasternNovelLibarys.ContainsKey((
                     Name: name,
                     Chapter: Chapter,
@@ -134,8 +134,8 @@ namespace ServerAPI.Controllers
                     CountryId: CountryId)))
                     continue;
 
-                // create the City entity and fill it with xlsx data 
-                var EasternNovelLibary = new EasternNovelLibary
+                // create the easternNovelLibary entity and fill it with xlsx data 
+                var easternNovelLibary = new EasternNovelLibary
                 {
                     Name = name,
                     Chapter = Chapter,
@@ -143,8 +143,8 @@ namespace ServerAPI.Controllers
                     CountryId = CountryId
                 };
 
-                // add the new city to the DB context 
-                _context.EasternNovelLibary.Add(EasternNovelLibary);
+                // add the new easternNovelLibary to the DB context 
+                _context.EasternNovelLibary.Add(easternNovelLibary);
 
                 // increment the counter 
                 numberOfCitiesAdded++;
@@ -160,7 +160,6 @@ namespace ServerAPI.Controllers
                 novel = numberOfCountriesAdded
             });
         }
-        [HttpGet]
         [HttpGet]
         public async Task<ActionResult> CreateDefaultUsers()
         {
@@ -219,7 +218,7 @@ namespace ServerAPI.Controllers
             }
 
             // check if the standard user already exists
-            var email_User = "user@email.com";
+            var email_User = "user";
             if (await _userManager.FindByNameAsync(email_User) == null)
             {
                 // create a new standard ApplicationUser account

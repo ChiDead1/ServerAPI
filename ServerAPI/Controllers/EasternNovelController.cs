@@ -33,30 +33,30 @@ public class EasternNovelLibaryController : ControllerBase
     // GET: api/EasternNovelLibary/5
     [HttpGet("{id}")]
   
-        public async Task<ActionResult<EasternNovelLibary>> GetCity(int id)
+        public async Task<ActionResult<EasternNovelLibary>> GeteasternNovelLibary(int id)
     {
-        var city = await _context.EasternNovelLibary.FindAsync(id);
+        var easternNovelLibary = await _context.EasternNovelLibary.FindAsync(id);
 
-        if (city == null)
+        if (easternNovelLibary == null)
         {
             return NotFound();
         }
 
-        return city;
+        return easternNovelLibary;
     }
 
     // PUT: api/EasternNovelLibary/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
-        [Authorize(Roles = "RegisteredUser")]
-        public async Task<IActionResult> PutCity(int id, EasternNovelLibary city)
+        //[Authorize(Roles = "RegisteredUser")]
+        public async Task<IActionResult> PuteasternNovelLibary(int id, EasternNovelLibary easternNovelLibary)
     {
-        if (id != city.Id)
+        if (id != easternNovelLibary.Id)
         {
             return BadRequest();
         }
 
-        _context.Entry(city).State = EntityState.Modified;
+        _context.Entry(easternNovelLibary).State = EntityState.Modified;
 
         try
         {
@@ -64,7 +64,7 @@ public class EasternNovelLibaryController : ControllerBase
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (!CityExists(id))
+            if (!easternNovelLibaryExists(id))
             {
                 return NotFound();
             }
@@ -80,33 +80,33 @@ public class EasternNovelLibaryController : ControllerBase
     // POST: api/EasternNovelLibary
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-        [Authorize(Roles = "RegisteredUser")]
-        public async Task<ActionResult<EasternNovelLibary>> PostCity(EasternNovelLibary city)
+       // [Authorize(Roles = "RegisteredUser")]
+        public async Task<ActionResult<EasternNovelLibary>> PosteasternNovelLibary(EasternNovelLibary easternNovelLibary)
     {
-        _context.EasternNovelLibary.Add(city);
+        _context.EasternNovelLibary.Add(easternNovelLibary);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetCity", new { id = city.Id }, city);
+        return CreatedAtAction("GeteasternNovelLibary", new { id = easternNovelLibary.Id }, easternNovelLibary);
     }
 
     // DELETE: api/EasternNovelLibary/5
     [HttpDelete("{id}")]
-        [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> DeleteCity(int id)
+       // [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> DeleteeasternNovelLibary(int id)
     {
-        var city = await _context.EasternNovelLibary.FindAsync(id);
-        if (city == null)
+        var easternNovelLibary = await _context.EasternNovelLibary.FindAsync(id);
+        if (easternNovelLibary == null)
         {
             return NotFound();
         }
 
-        _context.EasternNovelLibary.Remove(city);
+        _context.EasternNovelLibary.Remove(easternNovelLibary);
         await _context.SaveChangesAsync();
 
         return NoContent();
     }
 
-    private bool CityExists(int id)
+    private bool easternNovelLibaryExists(int id)
     {
         return _context.EasternNovelLibary.Any(e => e.Id == id);
     }

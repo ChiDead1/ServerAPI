@@ -46,7 +46,7 @@ namespace ServerAPI.Controllers
         // PUT: api/NovelLibary/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles = "RegisteredUser")]
+       // [Authorize(Roles = "RegisteredUser")]
         public async Task<IActionResult> PutNovelLibary(int id, NovelLibary NovelL)
         {
             if (id != NovelL.Id)
@@ -78,7 +78,7 @@ namespace ServerAPI.Controllers
         // POST: api/NovelLibary
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "RegisteredUser")]
+    //    [Authorize(Roles = "RegisteredUser")]
         public async Task<ActionResult<NovelLibary>> PostNovelLibary(NovelLibary NovelL)
         {
             _context.NovelL.Add(NovelL);
@@ -89,7 +89,7 @@ namespace ServerAPI.Controllers
 
         // DELETE: api/NovelLibary/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Administrator")]
+      //  [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteNovelLibary(int id)
         {
             var NovelL = await _context.NovelL.FindAsync(id);

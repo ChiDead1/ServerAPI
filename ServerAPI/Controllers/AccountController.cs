@@ -30,6 +30,7 @@ namespace ServerAPI.Controllers
             if (user == null
                 || !await _userManager.CheckPasswordAsync(user, loginRequest.Password))
                 return Unauthorized(new LoginResult()
+
                 {
                     Success = false,
                     Message = "Invalid Email or Password."

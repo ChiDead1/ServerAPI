@@ -16,7 +16,7 @@ public partial class MasterContext : IdentityDbContext<ApplicationUser>
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\mssqllocaldb;Integrated Security=true");
+        => optionsBuilder.UseSqlServer("Data Source=comp584.ce717m7yn2n9.us-east-2.rds.amazonaws.com;Initial Catalog=NovelLibary;User ID=nhan;password=User@#123;TrustServerCertificate = True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -30,7 +30,7 @@ public partial class MasterContext : IdentityDbContext<ApplicationUser>
         modelBuilder.Entity<EasternNovelLibary>()
             .Property(x => x.Chapter).HasColumnType("decimal(7,4)");
         modelBuilder.Entity<EasternNovelLibary>()
-            .Property(x => x.Author).HasColumnType("decimal(7,4)");
+        .Property(x => x.Author).HasColumnType("decimal(7,4)");
 
         modelBuilder.Entity<NovelLibary>().ToTable("NovelLibary");
         modelBuilder.Entity<NovelLibary>()
@@ -51,4 +51,4 @@ public partial class MasterContext : IdentityDbContext<ApplicationUser>
     public DbSet<EasternNovelLibary> EasternNovelLibary => Set<EasternNovelLibary>();
     public DbSet<NovelLibary> NovelL => Set<NovelLibary>();
 
-}
+}   

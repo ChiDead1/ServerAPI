@@ -1,0 +1,14 @@
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\bin\Release\net7.0\ClassLibrary584.deps.json
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\bin\Release\net7.0\ClassLibrary584.runtimeconfig.json
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\bin\Release\net7.0\ClassLibrary584.dll
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\bin\Release\net7.0\ClassLibrary584.pdb
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\ClassLibrary584.csproj.AssemblyReference.cache
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\ClassLibrary584.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\ClassLibrary584.AssemblyInfoInputs.cache
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\ClassLibrary584.AssemblyInfo.cs
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\ClassLibrary584.csproj.CoreCompileInputs.cache
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\ClassLibrary584.dll
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\refint\ClassLibrary584.dll
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\ClassLibrary584.pdb
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\ClassLibrary584.genruntimeconfig.cache
+C:\Users\tienn\OneDrive\Desktop\Server\ClassLibrary584\obj\Release\net7.0\ref\ClassLibrary584.dll

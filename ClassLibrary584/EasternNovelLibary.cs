@@ -14,14 +14,14 @@ public class EasternNovelLibary
 {
     #region Properties
     /// <summary>
-    /// The unique id and primary key for this City
+    /// The unique id and primary key for this easternNovelLibary
     /// </summary>
     [Key]
     [Required]
     public int Id { get; set; }
 
     /// <summary>
-    /// City name (in UTF8 format)
+    /// easternNovelLibary name (in UTF8 format)
     /// </summary>
     public string Name { get; set; } = null!;
 
@@ -32,7 +32,7 @@ public class EasternNovelLibary
     public decimal Chapter { get; set; }
 
     /// <summary>
-    /// EasternNovelLibary Authorgitude
+    /// easternNovelLibary name (in UTF8 format)
     /// </summary>
     [Column(TypeName = "decimal(7,4)")]
     public decimal Author { get; set; }
@@ -46,8 +46,9 @@ public class EasternNovelLibary
 
     #region Navigation Properties
     /// <summary>
-    /// The country reChaptered to this city.
+    /// The country reChaptered to this easternNovelLibary.
     /// </summary>
     public NovelLibary? Novel { get; set; }
     #endregion
+    
 }

@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<MasterContext>(optionsBuilder =>
     optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+    
 builder.Services.AddScoped<JwtHandler>();
 // Add ASP.NET Core Identity support
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
